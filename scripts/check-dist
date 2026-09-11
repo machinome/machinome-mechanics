@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+# Copyright (C) 2023-2026 Luis Henrique Cassis Fagundes
+# SPDX-License-Identifier: Apache-2.0
+
+"""Build, validate and smoke wheel/sdist outside the checkout; upload nothing."""
+
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def run(*args, cwd=ROOT, env=None):
+    subprocess.run([sys.executable, *map(str, args)], cwd=cwd, env=env, check=True)
+
+
+def main():
+    # Retain this interpreter's dependencies (including a development solid-node),
+    # but never let the source mechanics package satisfy an installed smoke test.
+    dependency_paths = [
+        str(Path(path).resolve()) for path in sys.path if path
+        and not Path(path).resolve().is_relative_to(ROOT)
+    ]
+    with tempfile.TemporaryDirectory(prefix="solid-node-mechanics-dist-") as directory:
+        scratch = Path(directory)
+        dist = scratch / "dist"
+        run("-m", "build", "--outdir", dist)
+        archives = sorted(dist.iterdir())
+        assert len(archives) == 2, archives
+        run("-m", "twine", "check", "--strict", *archives)
+        for index, archive in enumerate(archives):
+            installed = scratch / str(index)
+            run("-m", "pip", "install", "--no-deps", "--target", installed,
+                archive, cwd=scratch)
+            probe = """
+import importlib.metadata as metadata
+from pathlib import Path
+from solid2 import get_animation_time
+from solid2.core.object_base import OpenSCADConstant
+import solid_node_mechanics as mechanics
+installed = Path(INSTALLED).resolve()
+assert Path(mechanics.__file__).resolve().is_relative_to(installed)
+assert len(mechanics.__all__) == 12
+assert mechanics.screw_travel(360, 2) == 2
+assert mechanics.piston_height(0, 15, 60) == 75
+assert mechanics.circle_intersection((0, 0), 5, (8, 0), 5) == (4, 3)
+assert isinstance(mechanics.piston_height(get_animation_time(), 15, 60),
+                  OpenSCADConstant)
+package = metadata.distribution('solid-node-mechanics')
+assert package.metadata['License-Expression'] == 'Apache-2.0'
+assert 'solid-node>=0.6.0' in package.requires
+files = [str(path) for path in package.files]
+assert any(path.endswith('/licenses/LICENSE') for path in files)
+assert any(path.endswith('/licenses/NOTICE') for path in files)
+assert not any(path.startswith('solid_node/') for path in files)
+print('Installed numeric/symbolic smoke passed:', mechanics.__file__)
+"""
+            prefix = (
+                "import sys\nsys.path[:0] = "
+                + repr([str(installed), *dependency_paths])
+                + "\nINSTALLED = " + repr(str(installed)) + "\n"
+            )
+            run("-I", "-c", prefix + probe, cwd=scratch)
+    print("Wheel and sdist validated; nothing uploaded.")
+
+
+if __name__ == "__main__":
+    main()
