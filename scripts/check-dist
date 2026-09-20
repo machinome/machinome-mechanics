@@ -60,6 +60,9 @@ assert isclose(mechanics.rolling_travel(360, 2), 4 * pi)
 assert isinstance(mechanics.rolling_travel(get_animation_time(), 2),
                   OpenSCADConstant)
 assert isclose(mechanics.rolling_angle(4 * pi, 2), 360)
+assert isclose(mechanics.pulley_pitch_radius(117, 2) * 2 * pi, 234)
+assert isinstance(mechanics.pulley_pitch_radius(20, get_animation_time()),
+                  OpenSCADConstant)
 assert isinstance(mechanics.rolling_angle(get_animation_time(), 2),
                   OpenSCADConstant)
 assert mechanics.screw_travel(360, 2) == 2
