@@ -79,6 +79,10 @@ assert mechanics.screw_travel(360, 2) == 2
 assert mechanics.piston_height(0, 15, 60) == 75
 assert mechanics.circle_intersection((0, 0), 5, (8, 0), 5) == (4, 3)
 assert mechanics.two_link_angles(8, 0, 5, 3) == (0, 0)
+assert isclose(mechanics.four_bar_pose(90, (0,0), (4,0), 3, 4, 3, -1)
+               ['rocker_angle'], 90)
+assert isinstance(mechanics.four_bar_pose(get_animation_time(), (0,0), (6,0),
+                                          2, 6, 4)['coupler_angle'], OpenSCADConstant)
 assert all(isinstance(angle, OpenSCADConstant) for angle in
            mechanics.two_link_angles(3 + get_animation_time(), 4, 5, 5))
 assert isinstance(mechanics.piston_height(get_animation_time(), 15, 60),
