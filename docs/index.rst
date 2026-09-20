@@ -47,7 +47,7 @@ Find the formula you need
    * - Mechanism
      - What you can calculate
    * - :doc:`Gears <reference/gears>`
-     - A driven gear's angle, or the driver's angle when working backwards.
+     - External gear registration and fixed-ring cycloidal angular ratios.
    * - :doc:`Lead screws <reference/screws>`
      - Linear travel from rotation, or the rotation needed for a travel.
    * - :doc:`Slider-cranks <reference/cranks>`
