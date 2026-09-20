@@ -1,0 +1,26 @@
+/* Keep the framework's RTD theme, with readable formula reference tables. */
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  white-space: normal;
+}
+.rst-content .mechanism-diagram {
+  margin: 1.5rem auto;
+}
+.rst-content dl.py.function > dt {
+  overflow-wrap: anywhere;
+}
+@media screen and (max-width: 600px) {
+  .rst-content dl.py.function dl.field-list {
+    display: block;
+  }
+  .rst-content dl.py.function dl.field-list > dt {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+  }
+  .rst-content dl.py.function dl.field-list > dd,
+  .rst-content dl.py.function > dd {
+    margin-left: 0;
+    overflow-wrap: anywhere;
+  }
+}
