@@ -58,8 +58,8 @@ Find the formula you need
      - Circle intersections, triangle angles and the rise of a rigid link.
    * - :doc:`Rolling motion <reference/rolling>`
      - Rack, belt or drum travel from rotation, and its inverse.
-   * - :doc:`Belt pitch geometry <reference/belts>`
-     - Pulley pitch radius from tooth count and linear pitch.
+   * - :doc:`Belt geometry <reference/belts>`
+     - Pulley pitch radius and directed tangent contacts.
 
 These helpers describe geometry and movement. They do not generate gear
 teeth or threads, solve forces, or check collisions. Use the `Machinome
