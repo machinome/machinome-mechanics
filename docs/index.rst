@@ -59,7 +59,7 @@ Find the formula you need
    * - :doc:`Rolling motion <reference/rolling>`
      - Rack, belt or drum travel from rotation, and its inverse.
    * - :doc:`Belt geometry <reference/belts>`
-     - Pulley pitch radius and directed tangent contacts.
+     - Pulley pitch radius, directed tangent contacts and closed path metrics.
 
 These helpers describe geometry and movement. They do not generate gear
 teeth or threads, solve forces, or check collisions. Use the `Machinome
