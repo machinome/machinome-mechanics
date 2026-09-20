@@ -58,6 +58,9 @@ assert all(callable(getattr(mechanics, name)) for name in EXPECTED_EXPORTS)
 from math import isclose, pi
 assert isclose(mechanics.rolling_travel(360, 2), 4 * pi)
 assert mechanics.cycloidal_ratio(20, 21) == -0.05
+assert mechanics.indexed_advance(810, 7.5, lambda p: 7.5*p/360) == 16.875
+assert isinstance(mechanics.indexed_advance(get_animation_time(), 7.5,
+                  lambda p: 7.5*p/360), OpenSCADConstant)
 assert isclose(mechanics.internal_mesh_angle(0, 126, 54, 45), -60)
 assert isinstance(mechanics.internal_mesh_angle(0, 126, 54, get_animation_time()),
                   OpenSCADConstant)

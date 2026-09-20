@@ -54,6 +54,8 @@ Find the formula you need
      - Crank-pin position, connecting-rod angle and piston height.
    * - :doc:`Cam followers <reference/cams>`
      - Periodic half-cosine lift, return and base dwell.
+   * - :doc:`Indexed advance <reference/indexing>`
+     - Signed completed-turn accumulation around a mechanical stroke.
    * - :doc:`Linear deltas <reference/deltas>`
      - Carriage heights and rod orientations for an effector position.
    * - :doc:`Linkages <reference/linkages>`
