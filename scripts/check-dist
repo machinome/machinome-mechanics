@@ -4,6 +4,7 @@
 
 """Build, validate and smoke wheel/sdist outside the checkout; upload nothing."""
 
+import ast
 from pathlib import Path
 import subprocess
 import sys
@@ -18,6 +19,15 @@ def run(*args, cwd=ROOT, env=None):
 
 
 def main():
+    # Read the declared API without importing either an editable installation or
+    # the source package into the distribution smoke's interpreter.
+    tree = ast.parse((ROOT / "machinome_mechanics" / "__init__.py").read_text())
+    expected_exports = next(
+        ast.literal_eval(node.value) for node in tree.body
+        if isinstance(node, ast.Assign)
+        and any(isinstance(target, ast.Name) and target.id == "__all__"
+                for target in node.targets)
+    )
     # Retain this interpreter's dependencies (including a development machinome),
     # but never let the source mechanics package satisfy an installed smoke test.
     dependency_paths = [
@@ -43,7 +53,12 @@ from solid2.core.object_base import OpenSCADConstant
 import machinome_mechanics as mechanics
 installed = Path(INSTALLED).resolve()
 assert Path(mechanics.__file__).resolve().is_relative_to(installed)
-assert len(mechanics.__all__) == 12
+assert mechanics.__all__ == EXPECTED_EXPORTS
+assert all(callable(getattr(mechanics, name)) for name in EXPECTED_EXPORTS)
+from math import isclose, pi
+assert isclose(mechanics.rolling_travel(360, 2), 4 * pi)
+assert isinstance(mechanics.rolling_travel(get_animation_time(), 2),
+                  OpenSCADConstant)
 assert mechanics.screw_travel(360, 2) == 2
 assert mechanics.piston_height(0, 15, 60) == 75
 assert mechanics.circle_intersection((0, 0), 5, (8, 0), 5) == (4, 3)
@@ -62,6 +77,7 @@ print('Installed numeric/symbolic smoke passed:', mechanics.__file__)
                 "import sys\nsys.path[:0] = "
                 + repr([str(installed), *dependency_paths])
                 + "\nINSTALLED = " + repr(str(installed)) + "\n"
+                + "EXPECTED_EXPORTS = " + repr(expected_exports) + "\n"
             )
             run("-I", "-c", prefix + probe, cwd=scratch)
     print("Wheel and sdist validated; nothing uploaded.")

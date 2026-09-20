@@ -1,9 +1,5 @@
-# Distribution Specification
+## MODIFIED Requirements
 
-## Purpose
-
-Provide an independently installable library of helpers for machinome projects.
-## Requirements
 ### Requirement: Helpers depend on the framework
 
 The distribution SHALL be named `machinome-mechanics` and expose the Python

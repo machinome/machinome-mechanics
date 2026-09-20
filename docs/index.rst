@@ -7,7 +7,7 @@ Turn a gear and find its neighbour's angle. Rotate a lead screw and find
 its travel. Move a delta printer's effector and find the carriage heights.
 Machinome Mechanics supplies the formulas that connect those movements.
 
-The package provides twelve small Python functions for gears, screws,
+The package provides small Python functions for gears, screws, rolling travel,
 slider-cranks, linear deltas and planar linkages. Use them to calculate a
 single pose, or put them inside a `Machinome motion law
 <https://machinome.readthedocs.io/en/latest/driving.html>`_ so the same
@@ -56,6 +56,8 @@ Find the formula you need
      - Carriage heights and rod orientations for an effector position.
    * - :doc:`Linkages <reference/linkages>`
      - Circle intersections, triangle angles and the rise of a rigid link.
+   * - :doc:`Rolling travel <reference/rolling>`
+     - Rack, belt or drum travel from a wheel's rotation.
 
 These helpers describe geometry and movement. They do not generate gear
 teeth or threads, solve forces, or check collisions. Use the `Machinome
