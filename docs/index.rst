@@ -55,7 +55,7 @@ Find the formula you need
    * - :doc:`Linear deltas <reference/deltas>`
      - Carriage heights and rod orientations for an effector position.
    * - :doc:`Linkages <reference/linkages>`
-     - Circle intersections, triangle angles and the rise of a rigid link.
+     - Circle intersections, triangle angles, link rise and two-link joint angles.
    * - :doc:`Rolling motion <reference/rolling>`
      - Rack, belt or drum travel from rotation, and its inverse.
    * - :doc:`Belt geometry <reference/belts>`
