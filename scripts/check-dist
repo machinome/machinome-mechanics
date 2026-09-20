@@ -58,6 +58,9 @@ assert all(callable(getattr(mechanics, name)) for name in EXPECTED_EXPORTS)
 from math import isclose, pi
 assert isclose(mechanics.rolling_travel(360, 2), 4 * pi)
 assert mechanics.cycloidal_ratio(20, 21) == -0.05
+assert isclose(mechanics.harmonic_cam_lift(280, 18, 240, 80), 9)
+assert isinstance(mechanics.harmonic_cam_lift(get_animation_time(), 18),
+                  OpenSCADConstant)
 assert isinstance(mechanics.cycloidal_ratio(20 + get_animation_time(), 21),
                   OpenSCADConstant)
 assert isinstance(mechanics.rolling_travel(get_animation_time(), 2),

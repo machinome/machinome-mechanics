@@ -52,6 +52,8 @@ Find the formula you need
      - Linear travel from rotation, or the rotation needed for a travel.
    * - :doc:`Slider-cranks <reference/cranks>`
      - Crank-pin position, connecting-rod angle and piston height.
+   * - :doc:`Cam followers <reference/cams>`
+     - Periodic half-cosine lift, return and base dwell.
    * - :doc:`Linear deltas <reference/deltas>`
      - Carriage heights and rod orientations for an effector position.
    * - :doc:`Linkages <reference/linkages>`
