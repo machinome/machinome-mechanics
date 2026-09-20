@@ -70,6 +70,9 @@ assert isclose(mechanics.belt_path_metrics(((0, 0), (10, 0)), (2, 2))['length'],
                20 + 4 * pi)
 assert isinstance(mechanics.belt_path_metrics(
     ((get_animation_time(), 0), (10, 0)), (2, 3))['length'], OpenSCADConstant)
+assert isclose(mechanics.belt_pulley_angle(10 + pi, 2, 90, 10, -1), 180)
+assert isinstance(mechanics.belt_pulley_angle(get_animation_time(), 2, 90),
+                  OpenSCADConstant)
 assert isinstance(mechanics.rolling_angle(get_animation_time(), 2),
                   OpenSCADConstant)
 assert mechanics.screw_travel(360, 2) == 2
