@@ -56,8 +56,8 @@ Find the formula you need
      - Carriage heights and rod orientations for an effector position.
    * - :doc:`Linkages <reference/linkages>`
      - Circle intersections, triangle angles and the rise of a rigid link.
-   * - :doc:`Rolling travel <reference/rolling>`
-     - Rack, belt or drum travel from a wheel's rotation.
+   * - :doc:`Rolling motion <reference/rolling>`
+     - Rack, belt or drum travel from rotation, and its inverse.
 
 These helpers describe geometry and movement. They do not generate gear
 teeth or threads, solve forces, or check collisions. Use the `Machinome
