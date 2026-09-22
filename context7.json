@@ -1,0 +1,22 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Machinome Mechanics",
+  "description": "Mechanics helpers for the Machinome framework: gear, screw, crank, delta, cam, belt, rolling, indexing and linkage formulas for numeric poses and symbolic motion.",
+  "folders": [],
+  "excludeFolders": [
+    "openspec",
+    "workflow",
+    "tests",
+    "build",
+    "dist",
+    "docs/_build"
+  ],
+  "excludeFiles": [],
+  "rules": [
+    "machinome-mechanics 0.1.0 was released with Machinome 0.7.0 and requires Machinome 0.7 or newer; solid-node 0.6.0 does not satisfy it.",
+    "Install with pip install 'machinome[mechanics]'. Import helpers from machinome_mechanics; the framework never imports or re-exports them.",
+    "Angles are degrees. The same helpers accept numbers and machinome's symbolic driving values, so one formula serves a numeric pose and a relation law.",
+    "Use a helper inside a project's relation law, for example crank.turn.drives(piston.rise, law=piston_law) where the law calls piston_height.",
+    "The package supplies formulas only. The project supplies dimensions, reference frames, signs, branch selection and assembly facts."
+  ]
+}
