@@ -9,8 +9,8 @@ Machinome Mechanics supplies the formulas that connect those movements.
 
 The package provides small Python functions for gears, screws, rolling travel,
 slider-cranks, linear deltas and planar linkages. Use them to calculate a
-single pose, or put them inside a `Machinome motion law
-<https://machinome.readthedocs.io/en/latest/driving.html>`_ so the same
+single pose, or put them inside a `Machinome relation law
+<https://machinome.readthedocs.io/en/latest/concepts/relations.html>`_ so the same
 formula follows a driver through an animation. Numeric and symbolic inputs
 share one definition through ``machinome.math``.
 
@@ -33,9 +33,9 @@ straight to the :doc:`helper reference <reference/index>`.
 
 .. note::
 
-   This manual describes **0.1.0, in preparation for release**, with
-   Machinome 0.7 or newer. Both releases are pending publication; the
-   installation guide includes the source installation path.
+   This manual describes Machinome Mechanics **0.1.0**, released on
+   20 September 2026 with Machinome 0.7.0 and requiring Machinome 0.7 or
+   newer. :doc:`getting-started` installs both packages at once.
 
 Find the formula you need
 -------------------------
