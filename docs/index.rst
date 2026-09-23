@@ -34,7 +34,7 @@ straight to the :doc:`helper reference <reference/index>`.
 .. note::
 
    This manual describes Machinome Mechanics **0.1.0**, released on
-   22 September 2026 with Machinome 0.7.0 and requiring Machinome 0.7 or
+   23 September 2026 with Machinome 0.7.0 and requiring Machinome 0.7 or
    newer. :doc:`getting-started` installs both packages at once.
 
 Find the formula you need
